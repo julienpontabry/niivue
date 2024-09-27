@@ -2,6 +2,8 @@
 
 NiiVue is web-based visualization tool for neuroimaging that can run on any operating system and any web device (phone, tablet, computer). This repository contains only the **core NiiVue package** that can be embedded into other projects. We have additional [repositories](https://github.com/niivue) that wrap NiiVue for use in jupyter notebooks, vscode, and electron applications. 
 
+This repo hosts some modifications used by the IPB web viewer.
+
 # News
 
 The NiiVue iOS app is now available on iPhone and iPad.

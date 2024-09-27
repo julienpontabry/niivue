@@ -1745,9 +1745,11 @@ export class Niivue {
     this.canvas.addEventListener('dblclick', this.resetBriCon.bind(this))
 
     //  drag and drop support
-    this.canvas.addEventListener('dragenter', this.dragEnterListener.bind(this), false)
-    this.canvas.addEventListener('dragover', this.dragOverListener.bind(this), false)
-    this.canvas.addEventListener('drop', this.dropListener.bind(this), false)
+    if (this.opts.dragAndDropEnabled) {
+      this.canvas.addEventListener('dragenter', this.dragEnterListener.bind(this), false)
+      this.canvas.addEventListener('dragover', this.dragOverListener.bind(this), false)
+      this.canvas.addEventListener('drop', this.dropListener.bind(this), false)
+    }
 
     // add keyup
     this.canvas.setAttribute('tabindex', '0')
@@ -2026,12 +2028,9 @@ export class Niivue {
 
   // not included in public docs
   dropListener(e: DragEvent): void {
-    e.stopPropagation()
     e.preventDefault()
-    // don't do anything if drag and drop has been turned off
-    if (!this.opts.dragAndDropEnabled) {
-      return
-    }
+    e.stopPropagation()
+
     const urlsToLoad: string[] = []
     const dt = e.dataTransfer
     if (!dt) {
